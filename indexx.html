@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Berlin News</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background-color: #f8f9fa; font-family: Arial, sans-serif; }
+    .navbar { background-color: #212529; }
+    .navbar-brand, .nav-link { color: white !important; }
+    .hero { background-image: url('https://images.unsplash.com/photo-1529070538774-1843cb3265df'); background-size: cover; color: white; padding: 50px 20px; text-align: center; }
+    .card-img-top { height: 200px; object-fit: cover; }
+    footer { background-color: #212529; color: white; padding: 20px; text-align: center; margin-top: 40px; }
+  </style>
+</head>
+<body>
+  <div class="container text-center mt-5" id="captcha-container">
+    <h2>Welcome to Berlin News</h2>
+    <p>Solve this simple math problem to prove you're human:</p>
+    <p id="math-question" class="fw-bold"></p>
+    <input type="text" id="captcha-answer" class="form-control w-25 mx-auto" placeholder="Enter your answer">
+    <button class="btn btn-primary mt-2" onclick="validateCaptcha()">Verify</button>
+    <p id="captcha-error" class="text-danger mt-2"></p>
+  </div>
+
+  <div id="main-content" style="display:none;">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Berlin News</a>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="#entertainment">Entertainment</a></li>
+            <li class="nav-item"><a class="nav-link" href="#tech">Tech</a></li>
+            <li class="nav-item"><a class="nav-link" href="#youtube">YouTube World</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <h1>Daily News Updates from Berlin & Beyond</h1>
+      <p>Your reliable source for tech, entertainment, and YouTube news.</p>
+    </section>
+
+    <div class="container mt-4">
+      <h3 class="mb-4">Featured Articles</h3>
+      <div class="row">
+        <!-- Static Articles with updated images -->
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <img src="https://images.unsplash.com/photo-1581090700227-1e8f327a54de" class="card-img-top" alt="AI News">
+            <div class="card-body">
+              <h5 class="card-title">The Rise of AI in Everyday Life</h5>
+              <p class="card-text">Artificial intelligence is transforming industries across the globe, from healthcare to entertainment.</p>
+              <a href="#" class="btn btn-primary">Read more</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <img src="https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2" class="card-img-top" alt="Concert">
+            <div class="card-body">
+              <h5 class="card-title">Berlin's Music Scene Returns Post-Pandemic</h5>
+              <p class="card-text">Live performances are back, and Berlin's nightlife is buzzing once again.</p>
+              <a href="#" class="btn btn-primary">Read more</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <img src="https://images.unsplash.com/photo-1502810190503-830027f9fef8" class="card-img-top" alt="Festival">
+            <div class="card-body">
+              <h5 class="card-title">Top 5 Summer Festivals in Germany</h5>
+              <p class="card-text">Discover the most anticipated festivals in Germany this summer, from music to food and culture.</p>
+              <a href="#" class="btn btn-primary">Read more</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <img src="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9" class="card-img-top" alt="Gaming">
+            <div class="card-body">
+              <h5 class="card-title">eSports: The Competitive Edge</h5>
+              <p class="card-text">The eSports industry is booming, drawing millions of viewers and reshaping modern entertainment.</p>
+              <a href="#" class="btn btn-primary">Read more</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <img src="https://images.unsplash.com/photo-1564866657314-64d5d6733b11" class="card-img-top" alt="Climate">
+            <div class="card-body">
+              <h5 class="card-title">Climate Change: Action and Awareness</h5>
+              <p class="card-text">Climate change continues to be a pressing global issue demanding attention and innovation.</p>
+              <a href="#" class="btn btn-primary">Read more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="mt-5" id="youtube">YouTube News</h3>
+      <div class="row">
+        <div class="col-md-4"><iframe width="100%" height="200" src="https://www.youtube.com/embed/K4TOrB7at0Y" frameborder="0" allowfullscreen></iframe></div>
+        <div class="col-md-4"><iframe width="100%" height="200" src="https://www.youtube.com/embed/TcMBFSGVi1c" frameborder="0" allowfullscreen></iframe></div>
+        <div class="col-md-4"><iframe width="100%" height="200" src="https://www.youtube.com/embed/hA6hldpSTF8" frameborder="0" allowfullscreen></iframe></div>
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2025 Berlin News. All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    let num1 = Math.floor(Math.random() * 10) + 1;
+    let num2 = Math.floor(Math.random() * 10) + 1;
+    document.getElementById('math-question').innerText = `What is ${num1} + ${num2}?`;
+
+    function validateCaptcha() {
+      const userAnswer = document.getElementById('captcha-answer').value;
+      if (parseInt(userAnswer) === num1 + num2) {
+        document.getElementById('captcha-container').style.display = 'none';
+        document.getElementById('main-content').style.display = 'block';
+      } else {
+        document.getElementById('captcha-error').innerText = 'Incorrect answer, please try again.';
+      }
+    }
+  </script>
+</body>
+</html>
